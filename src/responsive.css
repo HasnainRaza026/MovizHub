@@ -1,0 +1,19 @@
+@media (max-width: 955px) {
+  header .results-found {
+    display: none;
+  }
+
+  header input {
+    width: 100%;
+  }
+
+  header {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  header .logo {
+    display: none;
+  }
+}
