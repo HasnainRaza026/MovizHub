@@ -22,10 +22,10 @@ export function Input({ searchMovie, setSearchMovie }) {
   );
 }
 
-export function ResultsFound() {
+export function ResultsFound({ allMovies }) {
   return (
     <p className="results-found">
-      Found <strong>0</strong> Results
+      Found <strong>{allMovies ? allMovies.quantity : 0}</strong> Results
     </p>
   );
 }
