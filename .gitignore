@@ -6,6 +6,9 @@ node_modules
 # enviroment variables
 .env
 
+# todos
+project.todo
+
 # testing
 /coverage
 

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function Main({ children }) {
   return <main>{children}</main>;
 }
@@ -34,5 +36,23 @@ function DisplayMovies({ movie }) {
 }
 
 export function Watched({ children }) {
-  return <div className="watched">{children}</div>;
+  const [isOpen, setIsOpen] = useState(true);
+
+  return (
+    <div className="watched">
+      <CloseButton isOpen={isOpen} setIsOpen={setIsOpen} />
+      {children(isOpen)}
+    </div>
+  );
+}
+
+function CloseButton({ isOpen, setIsOpen }) {
+  return (
+    <button className="close-btn" onClick={() => setIsOpen((prev) => !prev)}>
+      <img
+        src={isOpen ? "assets/icons/close.svg" : "assets/icons/open.svg"}
+        alt={isOpen ? "Close" : "Open"}
+      />
+    </button>
+  );
 }

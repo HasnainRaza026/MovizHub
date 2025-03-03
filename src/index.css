@@ -145,6 +145,26 @@ main .watched {
   flex-direction: column;
   gap: 25px;
   border-radius: 12px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 6px;
+  left: 324px;
+  z-index: 1000;
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  border: none;
+  border-radius: 1000px;
+  background-color: #131313;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+}
+
+.close-btn:hover {
+  background-color: #000000;
 }
 
 main .watched .watched-data {

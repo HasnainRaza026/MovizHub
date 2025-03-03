@@ -1,8 +1,8 @@
-export function WatchedMoviesList() {
+export function WatchedMoviesList({ isOpen }) {
   return (
     <>
       <MoviesData />
-      <MoviesList />
+      {isOpen ? <MoviesList /> : null}
     </>
   );
 }
@@ -48,7 +48,7 @@ function Movie() {
         </div>
       </div>
       <button>
-        <img src="assets/delete.svg" alt="delete" />
+        <img src="assets/icons/delete.svg" alt="delete" />
       </button>
     </li>
   );

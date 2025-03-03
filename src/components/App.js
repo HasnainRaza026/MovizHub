@@ -21,9 +21,7 @@ function App() {
       </Header>
       <Main>
         <AllMovies allMovies={allMovies} />
-        <Watched>
-          <WatchedMoviesList />
-        </Watched>
+        <Watched>{(isOpen) => <WatchedMoviesList isOpen={isOpen} />}</Watched>
       </Main>
     </div>
   );
