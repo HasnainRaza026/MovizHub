@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* General CSS */
+/* ----------------------- General CSS ---------------------------- */
 :root {
+  --primary-color: #2b3035;
   --secondary-color: #6741d9;
+  --tertary-color: #343a40;
 }
 
 * {
@@ -14,7 +16,7 @@
 body {
   background-color: #212529;
   font-family: "Roboto";
-  color: #fff;
+  color: #ffffff;
 }
 
 #root {
@@ -26,6 +28,14 @@ body {
 .app {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+ul {
+  list-style: none;
 }
 
 /* CSS for Header */
@@ -76,4 +86,154 @@ header input::placeholder {
 
 header .results-found {
   font-size: 1.25em;
+}
+
+/* ----------------------- CSS for Main ------------------------- */
+main {
+  display: flex;
+  gap: 60px;
+}
+
+main .all-movies {
+  width: 350px;
+  min-height: 500px;
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  padding: 8px 0;
+}
+
+main .all-movies ul {
+  width: 100%;
+}
+
+main .all-movies li {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid var(--tertary-color);
+  padding: 15px 20px;
+  transition: background-color 200ms ease-in-out;
+}
+
+main .all-movies li:hover {
+  background-color: var(--tertary-color);
+}
+
+.all-movies li img {
+  width: 36px;
+  height: 53px;
+}
+
+.all-movies li .movie-data {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.all-movies li .date {
+  font-size: 0.75em;
+}
+
+main .watched {
+  width: 355px;
+  min-height: 105px;
+  height: max-content;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-radius: 12px;
+}
+
+main .watched .watched-data {
+  width: 100%;
+  height: 105px;
+  background-color: var(--tertary-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px 20px;
+}
+
+.watched .watched-data .heading {
+  font-weight: 700;
+}
+
+.watched .watched-data ul {
+  display: flex;
+  gap: 20px;
+}
+
+.watched .watched-data li {
+  font-size: 14px;
+}
+
+main .watched .watched-list {
+  width: 100%;
+  border-radius: 12px;
+  background-color: var(--tertary-color);
+  padding: 20px;
+}
+
+.watched .watched-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.watched .watched-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.watched-list li .poster-data {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.watched-list li img {
+  width: 40px;
+  height: 59px;
+}
+
+.watched-list li .data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.watched-list .data ul {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.watched-list .data li {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.watched-list li button {
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  background-color: #9e2323;
+  border: none;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+}
+
+.watched-list li button:hover {
+  background-color: #df3737;
+}
+
+.watched-list li button img {
+  width: 12px;
+  height: 12px;
 }

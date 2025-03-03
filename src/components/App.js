@@ -1,7 +1,9 @@
-import { Header, Logo, Input, ResultsFound } from "./Header";
+import { useState } from "react";
 import "../index.css";
 import "../responsive.css";
-import { useState } from "react";
+import { Header, Logo, Input, ResultsFound } from "./Header";
+import { AllMovies, Main, Watched } from "./Main";
+import { WatchedMoviesList } from "./WatchedMoviesList";
 import { useFetchAllMovies } from "../hooks/useFetchAllMovies";
 
 function App() {
@@ -17,6 +19,12 @@ function App() {
         <Input searchMovie={searchMovie} setSearchMovie={setSearchMovie} />
         <ResultsFound allMovies={allMovies} />
       </Header>
+      <Main>
+        <AllMovies allMovies={allMovies} />
+        <Watched>
+          <WatchedMoviesList />
+        </Watched>
+      </Main>
     </div>
   );
 }
