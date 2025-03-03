@@ -1,16 +1,21 @@
 import { useState } from "react";
 
 export function Main({ children }) {
-  return <main>{children}</main>;
+  const [movieDetail, setMovieDetail] = useState(null);
+  return <main>{children(movieDetail, setMovieDetail)}</main>;
 }
 
-export function AllMovies({ allMovies }) {
+export function AllMovies({ allMovies, setMovieDetail }) {
   return (
     <div className="all-movies">
       <ul>
         {allMovies
           ? allMovies.movies.map((movie) => (
-              <DisplayMovies movie={movie} key={movie.imdbID} />
+              <DisplayMovies
+                movie={movie}
+                setMovieDetail={setMovieDetail}
+                key={movie.imdbID}
+              />
             ))
           : null}
       </ul>
@@ -18,9 +23,9 @@ export function AllMovies({ allMovies }) {
   );
 }
 
-function DisplayMovies({ movie }) {
+function DisplayMovies({ movie, setMovieDetail }) {
   return (
-    <li>
+    <li onClick={(e) => setMovieDetail(movie.imdbID)}>
       <img
         src={
           movie.Poster === "N/A" ? "assets/default-poster.png" : movie.Poster

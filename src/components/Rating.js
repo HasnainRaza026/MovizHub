@@ -5,18 +5,21 @@ export function Rating({ rating, setRating }) {
 
   return (
     <div className="rating-box">
-      {Array(10)
-        .fill(0)
-        .map((_, i) => (
-          <Stars
-            key={i}
-            id={i}
-            hoverStars={hoverStars}
-            setHoverStars={setHoverStars}
-            rating={rating}
-            setRating={setRating}
-          />
-        ))}
+      <div className="stars">
+        {Array(10)
+          .fill(0)
+          .map((_, i) => (
+            <Stars
+              key={i}
+              id={i}
+              hoverStars={hoverStars}
+              setHoverStars={setHoverStars}
+              rating={rating}
+              setRating={setRating}
+            />
+          ))}
+      </div>
+      {rating ? <button>+ Add to list</button> : null}
     </div>
   );
 }

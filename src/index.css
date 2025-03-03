@@ -296,23 +296,65 @@ main .watched .watched-list {
   flex-direction: column;
   gap: 40px;
   margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .watched .movie-body .rating-box {
   width: 100%;
   background-color: var(--tertary-color);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px 0;
 }
 
-.movie-body .rating-box img {
+.movie-body .rating-box .stars {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.rating-box .stars img {
   width: 35px;
   height: 35px;
   margin-left: -9px;
 }
 
-.movie-body .rating-box img:first-child {
+.rating-box .stars img:first-child {
   margin-left: 2px;
+}
+
+.movie-body .rating-box button {
+  width: 260px;
+  border: none;
+  font-size: 0.75em;
+  color: #ffffff;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  border-radius: 1000px;
+  cursor: pointer;
+  padding: 6px;
+  transition: background-color 200ms ease-in-out;
+}
+
+.movie-body .rating-box button:hover {
+  background-color: #5735bd;
+}
+
+.watched .movie-body .info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.movie-body .info p {
+  font-size: 0.75em;
+  font-weight: 400;
+}
+
+.movie-body .info .description {
+  font-style: italic;
 }

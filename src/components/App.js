@@ -21,18 +21,32 @@ function App() {
         <ResultsFound allMovies={allMovies} />
       </Header>
       <Main>
-        <AllMovies allMovies={allMovies} />
-        <Watched>
-          {/* {(isOpen, rating, setRating) => <WatchedMoviesList isOpen={isOpen} rating={rating}
-              setRating={setRating} />} */}
-          {(isOpen, rating, setRating) => (
-            <MovieDetail
-              isOpen={isOpen}
-              rating={rating}
-              setRating={setRating}
+        {(movieDetail, setMovieDetail) => (
+          <>
+            <AllMovies
+              allMovies={allMovies}
+              movieDetail={movieDetail}
+              setMovieDetail={setMovieDetail}
             />
-          )}
-        </Watched>
+            <Watched>
+              {(isOpen, rating, setRating) =>
+                movieDetail ? (
+                  <MovieDetail
+                    isOpen={isOpen}
+                    rating={rating}
+                    setRating={setRating}
+                  />
+                ) : (
+                  <WatchedMoviesList
+                    isOpen={isOpen}
+                    rating={rating}
+                    setRating={setRating}
+                  />
+                )
+              }
+            </Watched>
+          </>
+        )}
       </Main>
     </div>
   );

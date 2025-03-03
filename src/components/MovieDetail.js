@@ -7,6 +7,7 @@ export function MovieDetail({ isOpen, rating, setRating }) {
       {isOpen ? (
         <MovieBody>
           <Rating rating={rating} setRating={setRating} />
+          <Information />
         </MovieBody>
       ) : null}
     </>
@@ -29,4 +30,19 @@ function MovieHeader() {
 
 function MovieBody({ children }) {
   return <div className="movie-body">{children}</div>;
+}
+
+function Information() {
+  return (
+    <div className="info">
+      <p className="description">
+        Kamala, a superhero fan with an imagination--particularly when it comes
+        to Captain Marvel--feels like she doesn't fit in at school and sometimes
+        even at home, that is until she gets superpowers like the heroes she
+        admires.
+      </p>
+      <p>Starring Iman Vellani, Matt Lintz, Zenobia Shroff</p>
+      <p>Directed by Bilall Fallah</p>
+    </div>
+  );
 }
