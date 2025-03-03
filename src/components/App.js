@@ -5,6 +5,7 @@ import { Header, Logo, Input, ResultsFound } from "./Header";
 import { AllMovies, Main, Watched } from "./Main";
 import { WatchedMoviesList } from "./WatchedMoviesList";
 import { useFetchAllMovies } from "../hooks/useFetchAllMovies";
+import { MovieDetail } from "./MovieDetail";
 
 function App() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -21,7 +22,17 @@ function App() {
       </Header>
       <Main>
         <AllMovies allMovies={allMovies} />
-        <Watched>{(isOpen) => <WatchedMoviesList isOpen={isOpen} />}</Watched>
+        <Watched>
+          {/* {(isOpen, rating, setRating) => <WatchedMoviesList isOpen={isOpen} rating={rating}
+              setRating={setRating} />} */}
+          {(isOpen, rating, setRating) => (
+            <MovieDetail
+              isOpen={isOpen}
+              rating={rating}
+              setRating={setRating}
+            />
+          )}
+        </Watched>
       </Main>
     </div>
   );

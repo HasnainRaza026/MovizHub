@@ -37,11 +37,12 @@ function DisplayMovies({ movie }) {
 
 export function Watched({ children }) {
   const [isOpen, setIsOpen] = useState(true);
+  const [rating, setRating] = useState();
 
   return (
     <div className="watched">
       <CloseButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {children(isOpen)}
+      {children(isOpen, rating, setRating)}
     </div>
   );
 }

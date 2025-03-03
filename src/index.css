@@ -143,6 +143,7 @@ main .watched {
   background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 25px;
   border-radius: 12px;
   position: relative;
@@ -256,4 +257,62 @@ main .watched .watched-list {
 .watched-list li button img {
   width: 12px;
   height: 12px;
+}
+
+.watched .movie-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 12px;
+  background-color: var(--tertary-color);
+  padding: 25px 20px;
+}
+
+.watched .movie-header img {
+  width: 100px;
+  height: 148px;
+  border-radius: 8px;
+}
+
+.watched .movie-header .movie-header-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.movie-header .movie-header-data .title {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.movie-header .movie-header-data .other-detail {
+  font-weight: 400;
+}
+
+.watched .movie-body {
+  width: 280.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.watched .movie-body .rating-box {
+  width: 100%;
+  background-color: var(--tertary-color);
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.movie-body .rating-box img {
+  width: 35px;
+  height: 35px;
+  margin-left: -9px;
+}
+
+.movie-body .rating-box img:first-child {
+  margin-left: 2px;
 }
