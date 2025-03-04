@@ -1,12 +1,22 @@
 import { Rating } from "./Rating";
 
-export function MovieDetail({ isOpen, rating, setRating, movieDetail }) {
+export function MovieDetail({
+  isOpen,
+  rating,
+  setRating,
+  movieDetail,
+  onAddToWatchList,
+}) {
   return (
     <>
       <MovieHeader movieDetail={movieDetail} />
       {isOpen ? (
         <MovieBody>
-          <Rating rating={rating} setRating={setRating} />
+          <Rating
+            rating={rating}
+            setRating={setRating}
+            onAddToWatchList={onAddToWatchList}
+          />
           <Information movieDetail={movieDetail} />
         </MovieBody>
       ) : null}

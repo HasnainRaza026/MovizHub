@@ -2,8 +2,10 @@ import { useState } from "react";
 import "../index.css";
 import "../responsive.css";
 import { Header, Logo, Input, ResultsFound } from "./Header";
-import { AllMovies, Main, Watched } from "./Main";
-import { WatchedMoviesList } from "./WatchedMoviesList";
+import { Main } from "./Main";
+import { Watched } from "./Watched";
+import { AllMovies } from "./AllMovies";
+import { MoviesData, MoviesList, WatchedMoviesList } from "./WatchedMoviesList";
 import { useFetchAllMovies } from "../hooks/useFetchAllMovies";
 import { MovieDetail } from "./MovieDetail";
 
@@ -29,21 +31,35 @@ function App() {
               setMovieImdb={setMovieImdb}
               setRating={setRating}
             />
-            <Watched>
-              {(isOpen) =>
+            <Watched
+              movieDetail={movieDetail}
+              setMovieDetail={setMovieDetail}
+              rating={rating}
+            >
+              {(
+                isOpen,
+                moviesWatched,
+                setMoviesWatched,
+                handleAddToWatchList
+              ) =>
                 movieDetail ? (
                   <MovieDetail
                     isOpen={isOpen}
                     rating={rating}
                     setRating={setRating}
                     movieDetail={movieDetail}
+                    onAddToWatchList={handleAddToWatchList}
                   />
                 ) : (
-                  <WatchedMoviesList
-                    isOpen={isOpen}
-                    rating={rating}
-                    setRating={setRating}
-                  />
+                  <WatchedMoviesList>
+                    <MoviesData moviesWatched={moviesWatched} />
+                    {isOpen ? (
+                      <MoviesList
+                        moviesWatched={moviesWatched}
+                        setMoviesWatched={setMoviesWatched}
+                      />
+                    ) : null}
+                  </WatchedMoviesList>
                 )
               }
             </Watched>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function Rating({ rating, setRating }) {
+export function Rating({ rating, setRating, onAddToWatchList }) {
   const [hoverStars, setHoverStars] = useState();
 
   return (
@@ -19,7 +19,9 @@ export function Rating({ rating, setRating }) {
             />
           ))}
       </div>
-      {rating ? <button>+ Add to list</button> : null}
+      {rating ? (
+        <button onClick={onAddToWatchList}>+ Add to list</button>
+      ) : null}
     </div>
   );
 }
@@ -28,7 +30,7 @@ function Stars({ id, hoverStars, setHoverStars, rating, setRating }) {
   return (
     <img
       src={
-        id <= hoverStars || id <= rating
+        id <= hoverStars || id < rating
           ? "assets/icons/star-fill.svg"
           : "assets/icons/star-unfill.svg"
       }
@@ -36,7 +38,7 @@ function Stars({ id, hoverStars, setHoverStars, rating, setRating }) {
       data-id={id}
       onMouseEnter={(e) => setHoverStars(e.target.dataset.id)}
       onMouseLeave={() => setHoverStars()}
-      onClick={(e) => setRating(e.target.dataset.id)}
+      onClick={(e) => setRating(Number(e.target.dataset.id) + 1)}
     />
   );
 }
