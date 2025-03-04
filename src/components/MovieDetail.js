@@ -1,28 +1,35 @@
 import { Rating } from "./Rating";
 
-export function MovieDetail({ isOpen, rating, setRating }) {
+export function MovieDetail({ isOpen, rating, setRating, movieDetail }) {
   return (
     <>
-      <MovieHeader />
+      <MovieHeader movieDetail={movieDetail} />
       {isOpen ? (
         <MovieBody>
           <Rating rating={rating} setRating={setRating} />
-          <Information />
+          <Information movieDetail={movieDetail} />
         </MovieBody>
       ) : null}
     </>
   );
 }
 
-function MovieHeader() {
+function MovieHeader({ movieDetail }) {
   return (
     <div className="movie-header">
-      <img src="assets/default-poster.png" alt="Poster" />
+      <img
+        src={
+          movieDetail.poster ? movieDetail.poster : "assets/default-poster.png"
+        }
+        alt="Poster"
+      />
       <div className="movie-header-data">
-        <p className="title">Ms. Marvel</p>
-        <p className="other-detail">08 Jun 2022 • 169 min</p>
-        <p className="other-detail">Action, Adventure, Comedy</p>
-        <p className="other-detail">⭐ 6.2 IMDb rating</p>
+        <p className="title">{movieDetail.title}</p>
+        <p className="other-detail">
+          {movieDetail.releaseDate} • {movieDetail.runTime}
+        </p>
+        <p className="other-detail">{movieDetail.genra}</p>
+        <p className="other-detail">⭐ {movieDetail.imdbRating} IMDb rating</p>
       </div>
     </div>
   );
@@ -32,17 +39,12 @@ function MovieBody({ children }) {
   return <div className="movie-body">{children}</div>;
 }
 
-function Information() {
+function Information({ movieDetail }) {
   return (
     <div className="info">
-      <p className="description">
-        Kamala, a superhero fan with an imagination--particularly when it comes
-        to Captain Marvel--feels like she doesn't fit in at school and sometimes
-        even at home, that is until she gets superpowers like the heroes she
-        admires.
-      </p>
-      <p>Starring Iman Vellani, Matt Lintz, Zenobia Shroff</p>
-      <p>Directed by Bilall Fallah</p>
+      <p className="description">{movieDetail.plot}</p>
+      <p>Starring {movieDetail.actors}</p>
+      <p>Directed by {movieDetail.director}</p>
     </div>
   );
 }

@@ -2,21 +2,19 @@ import { useEffect } from "react";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export function useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail) {
+export function useFetchMovieDetail(movieImdb, setMovieDetail) {
   useEffect(() => {
-    if (!(searchMovie.length > 2)) {
-      setAllMovies(null);
-      setMovieDetail(null);
+    if (!movieImdb) {
       return;
     }
     const controller = new AbortController();
-    async function fetchMovies() {
+    async function fetchMovieDetail() {
       try {
         // setIsLoading(true);
         // setError("");
 
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
+          `http://www.omdbapi.com/?apikey=${API_KEY}&i=${movieImdb}`,
           { signal: controller.signal }
         );
 
@@ -27,23 +25,30 @@ export function useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail) {
         if (data.Response === "False") throw new Error("Movie not found");
 
         const movieData = {
-          quantity: data.totalResults,
-          movies: data.Search,
+          poster: data.Poster,
+          title: data.Title,
+          releaseDate: data.Released,
+          runTime: data.Runtime,
+          genra: data.Genre,
+          plot: data.Plot,
+          actors: data.Actors,
+          director: data.Director,
+          imdbRating: data.imdbRating,
         };
 
-        setAllMovies(movieData);
+        setMovieDetail(movieData);
       } catch (err) {
         if (err.name !== "AbortError") {
-          setAllMovies(null);
+          //   setAllMovies(null);
           console.log(err.message);
           // setError(err.message);
         }
       }
     }
-    fetchMovies();
+    fetchMovieDetail();
 
     return () => {
       controller.abort();
     };
-  }, [searchMovie, setAllMovies, setMovieDetail]);
+  }, [movieImdb, setMovieDetail]);
 }

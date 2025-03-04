@@ -1,11 +1,18 @@
 import { useState } from "react";
+import { useFetchMovieDetail } from "../hooks/useFetchMovieDetail";
 
-export function Main({ children }) {
-  const [movieDetail, setMovieDetail] = useState(null);
-  return <main>{children(movieDetail, setMovieDetail)}</main>;
+export function Main({ children, setMovieDetail }) {
+  const [movieImdb, setMovieImdb] = useState(null);
+  const [rating, setRating] = useState();
+  useFetchMovieDetail(movieImdb, setMovieDetail);
+  return <main>{children(setMovieImdb, rating, setRating)}</main>;
 }
 
-export function AllMovies({ allMovies, setMovieDetail }) {
+export function AllMovies({ allMovies, setMovieImdb, setRating }) {
+  const handleMovieClick = (imdb) => {
+    setMovieImdb(imdb);
+    setRating();
+  };
   return (
     <div className="all-movies">
       <ul>
@@ -13,7 +20,7 @@ export function AllMovies({ allMovies, setMovieDetail }) {
           ? allMovies.movies.map((movie) => (
               <DisplayMovies
                 movie={movie}
-                setMovieDetail={setMovieDetail}
+                onMovieClick={handleMovieClick}
                 key={movie.imdbID}
               />
             ))
@@ -23,9 +30,9 @@ export function AllMovies({ allMovies, setMovieDetail }) {
   );
 }
 
-function DisplayMovies({ movie, setMovieDetail }) {
+function DisplayMovies({ movie, onMovieClick }) {
   return (
-    <li onClick={(e) => setMovieDetail(movie.imdbID)}>
+    <li onClick={() => onMovieClick(movie.imdbID)}>
       <img
         src={
           movie.Poster === "N/A" ? "assets/default-poster.png" : movie.Poster
@@ -42,12 +49,11 @@ function DisplayMovies({ movie, setMovieDetail }) {
 
 export function Watched({ children }) {
   const [isOpen, setIsOpen] = useState(true);
-  const [rating, setRating] = useState();
 
   return (
     <div className="watched">
       <CloseButton isOpen={isOpen} setIsOpen={setIsOpen} />
-      {children(isOpen, rating, setRating)}
+      {children(isOpen)}
     </div>
   );
 }

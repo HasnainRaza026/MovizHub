@@ -10,8 +10,9 @@ import { MovieDetail } from "./MovieDetail";
 function App() {
   const [searchMovie, setSearchMovie] = useState("");
   const [allMovies, setAllMovies] = useState(null);
+  const [movieDetail, setMovieDetail] = useState(null);
 
-  useFetchAllMovies(searchMovie, setAllMovies);
+  useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail);
 
   return (
     <div className="app">
@@ -20,21 +21,22 @@ function App() {
         <Input searchMovie={searchMovie} setSearchMovie={setSearchMovie} />
         <ResultsFound allMovies={allMovies} />
       </Header>
-      <Main>
-        {(movieDetail, setMovieDetail) => (
+      <Main setMovieDetail={setMovieDetail}>
+        {(setMovieImdb, rating, setRating) => (
           <>
             <AllMovies
               allMovies={allMovies}
-              movieDetail={movieDetail}
-              setMovieDetail={setMovieDetail}
+              setMovieImdb={setMovieImdb}
+              setRating={setRating}
             />
             <Watched>
-              {(isOpen, rating, setRating) =>
+              {(isOpen) =>
                 movieDetail ? (
                   <MovieDetail
                     isOpen={isOpen}
                     rating={rating}
                     setRating={setRating}
+                    movieDetail={movieDetail}
                   />
                 ) : (
                   <WatchedMoviesList
