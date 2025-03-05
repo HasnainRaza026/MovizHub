@@ -47,6 +47,7 @@ function CloseButton({ isOpen, setIsOpen }) {
   return (
     <button className="close-btn" onClick={() => setIsOpen((prev) => !prev)}>
       <img
+        className="close-btn-img"
         src={isOpen ? "assets/icons/close.svg" : "assets/icons/open.svg"}
         alt={isOpen ? "Close" : "Open"}
       />

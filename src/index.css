@@ -80,10 +80,6 @@ header input::placeholder {
   color: rgba(255, 255, 255, 35%);
 }
 
-/* header input:active {
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 20%);
-} */
-
 header .results-found {
   font-size: 1.25em;
 }
@@ -152,7 +148,7 @@ main .watched {
 .close-btn {
   position: absolute;
   top: 6px;
-  left: 324px;
+  right: 6px;
   z-index: 1000;
   width: 24px;
   height: 24px;

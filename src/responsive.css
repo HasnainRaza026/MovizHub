@@ -10,10 +10,81 @@
   header {
     gap: 50px;
   }
+
+  main {
+    flex-direction: column;
+  }
+
+  main .watched {
+    order: -1;
+  }
 }
 
 @media (max-width: 600px) {
   header .logo {
     display: none;
+  }
+}
+
+@media (max-width: 455px) {
+  main .all-movies li {
+    flex-direction: column;
+  }
+
+  .all-movies li .movie-data {
+    align-items: center;
+  }
+
+  main .all-movies,
+  main .watched {
+    width: 100%;
+    text-align: center;
+  }
+
+  main .watched .watched-data {
+    align-items: center;
+    height: max-content;
+  }
+
+  .watched .watched-data ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .watched .watched-list li,
+  .watched-list li .poster-data,
+  .watched-list .data ul {
+    flex-direction: column;
+  }
+
+  .watched .watched-list li {
+    position: relative;
+  }
+
+  .watched-list li button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .watched-list li button img,
+  .close-btn-img {
+    width: 10px;
+    height: 10px;
+  }
+
+  .close-btn {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
