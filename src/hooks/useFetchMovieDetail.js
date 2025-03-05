@@ -2,7 +2,11 @@ import { useEffect } from "react";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export function useFetchMovieDetail(movieImdb, setMovieDetail) {
+export function useFetchMovieDetail(
+  movieImdb,
+  setMovieDetail,
+  setIsLoadingMovieDetail
+) {
   useEffect(() => {
     if (!movieImdb) {
       return;
@@ -10,7 +14,7 @@ export function useFetchMovieDetail(movieImdb, setMovieDetail) {
     const controller = new AbortController();
     async function fetchMovieDetail() {
       try {
-        // setIsLoading(true);
+        setIsLoadingMovieDetail(true);
         // setError("");
 
         const res = await fetch(
@@ -39,10 +43,11 @@ export function useFetchMovieDetail(movieImdb, setMovieDetail) {
         setMovieDetail(movieData);
       } catch (err) {
         if (err.name !== "AbortError") {
-          //   setAllMovies(null);
           console.log(err.message);
           // setError(err.message);
         }
+      } finally {
+        setIsLoadingMovieDetail(false);
       }
     }
     fetchMovieDetail();
@@ -50,5 +55,5 @@ export function useFetchMovieDetail(movieImdb, setMovieDetail) {
     return () => {
       controller.abort();
     };
-  }, [movieImdb, setMovieDetail]);
+  }, [movieImdb, setMovieDetail, setIsLoadingMovieDetail]);
 }

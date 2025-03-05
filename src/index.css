@@ -112,6 +112,20 @@ main .all-movies li {
   transition: background-color 200ms ease-in-out;
 }
 
+.skeleton-all-movies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.skeleton-all-movies-data {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 main .all-movies li:hover {
   background-color: var(--tertary-color);
 }
@@ -263,6 +277,32 @@ main .watched .watched-list {
   border-radius: 12px;
   background-color: var(--tertary-color);
   padding: 25px 20px;
+}
+
+.skeleton-movie-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.skeleton-movie-detail-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.skeleton-movie-detail-head-data {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-movie-detail-body {
+  margin-bottom: 20px;
 }
 
 .watched .movie-header img {

@@ -2,7 +2,12 @@ import { useEffect } from "react";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export function useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail) {
+export function useFetchAllMovies(
+  searchMovie,
+  setAllMovies,
+  setMovieDetail,
+  setIsLoadingAllMovies
+) {
   useEffect(() => {
     if (!(searchMovie.length > 2)) {
       setAllMovies(null);
@@ -12,7 +17,7 @@ export function useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail) {
     const controller = new AbortController();
     async function fetchMovies() {
       try {
-        // setIsLoading(true);
+        setIsLoadingAllMovies(true);
         // setError("");
 
         const res = await fetch(
@@ -38,6 +43,8 @@ export function useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail) {
           console.log(err.message);
           // setError(err.message);
         }
+      } finally {
+        setIsLoadingAllMovies(false);
       }
     }
     fetchMovies();
@@ -45,5 +52,5 @@ export function useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail) {
     return () => {
       controller.abort();
     };
-  }, [searchMovie, setAllMovies, setMovieDetail]);
+  }, [searchMovie, setAllMovies, setMovieDetail, setIsLoadingAllMovies]);
 }

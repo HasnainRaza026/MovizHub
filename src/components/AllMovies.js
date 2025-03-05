@@ -1,4 +1,11 @@
-export function AllMovies({ allMovies, setMovieImdb, setRating }) {
+import { SkeletonAllMovies } from "./SkeletonAllMovies";
+
+export function AllMovies({
+  allMovies,
+  setMovieImdb,
+  setRating,
+  isLoadingAllMovies,
+}) {
   const handleMovieClick = (imdb) => {
     setMovieImdb(imdb);
     setRating();
@@ -6,15 +13,17 @@ export function AllMovies({ allMovies, setMovieImdb, setRating }) {
   return (
     <div className="all-movies">
       <ul>
-        {allMovies
-          ? allMovies.movies.map((movie) => (
-              <DisplayMovies
-                movie={movie}
-                onMovieClick={handleMovieClick}
-                key={movie.imdbID}
-              />
-            ))
-          : null}
+        {isLoadingAllMovies ? (
+          <SkeletonAllMovies count={7} />
+        ) : allMovies ? (
+          allMovies.movies.map((movie) => (
+            <DisplayMovies
+              movie={movie}
+              onMovieClick={handleMovieClick}
+              key={movie.imdbID}
+            />
+          ))
+        ) : null}
       </ul>
     </div>
   );
