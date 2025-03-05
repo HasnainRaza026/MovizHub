@@ -24,6 +24,16 @@
   header .logo {
     display: none;
   }
+
+  header {
+    padding: 10px 15px;
+  }
+
+  header input {
+    font-size: 1em;
+    padding: 6px 15px;
+    border-radius: 6px;
+  }
 }
 
 @media (max-width: 455px) {

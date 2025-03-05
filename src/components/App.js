@@ -8,6 +8,7 @@ import { AllMovies } from "./AllMovies";
 import { MoviesData, MoviesList, WatchedMoviesList } from "./WatchedMoviesList";
 import { useFetchAllMovies } from "../hooks/useFetchAllMovies";
 import { MovieDetail } from "./MovieDetail";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 function App() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -15,6 +16,7 @@ function App() {
   const [movieDetail, setMovieDetail] = useState(null);
 
   useFetchAllMovies(searchMovie, setAllMovies, setMovieDetail);
+  usePageTitle("MovizHub");
 
   return (
     <div className="app">

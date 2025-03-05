@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export function Watched({ children, movieDetail, setMovieDetail, rating }) {
   const [isOpen, setIsOpen] = useState(true);
-  const [moviesWatched, setMoviesWatched] = useState([]);
+  const [moviesWatched, setMoviesWatched] = useState(() => {
+    return JSON.parse(localStorage.getItem("watchList")) || [];
+  });
+
+  useLocalStorage("watchList", moviesWatched);
 
   const handleAddToWatchList = () => {
     const movieExist = moviesWatched.filter(
