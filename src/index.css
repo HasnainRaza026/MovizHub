@@ -290,6 +290,7 @@ main .watched .watched-list {
   width: 280.5px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
   margin-top: 15px;
   margin-bottom: 20px;
@@ -303,14 +304,13 @@ main .watched .watched-list {
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  padding: 10px 0;
+  padding: 10px;
 }
 
 .movie-body .rating-box .stars {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 0 10px;
 }
 
 .rating-box .stars img {
@@ -324,7 +324,7 @@ main .watched .watched-list {
 }
 
 .movie-body .rating-box button {
-  width: 260px;
+  width: 100%;
   border: none;
   font-size: 0.75em;
   color: #ffffff;
