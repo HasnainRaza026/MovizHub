@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { ToastContainer } from "react-toastify";
 import "react-loading-skeleton/dist/skeleton.css";
 import "../index.css";
 import "../responsive.css";
@@ -9,9 +10,15 @@ import { Watched } from "./Watched";
 import { AllMovies } from "./AllMovies";
 import { MoviesData, MoviesList, WatchedMoviesList } from "./WatchedMoviesList";
 import { useFetchAllMovies } from "../hooks/useFetchAllMovies";
-import { MovieDetail } from "./MovieDetail";
+import {
+  Information,
+  MovieBody,
+  MovieDetail,
+  MovieHeader,
+} from "./MovieDetail";
 import { usePageTitle } from "../hooks/usePageTitle";
 import { SkeletonMovieDetail } from "./SkeletonMovieDetail";
+import { Rating } from "./Rating";
 
 function App() {
   const [searchMovie, setSearchMovie] = useState("");
@@ -62,13 +69,19 @@ function App() {
                   isLoadingMovieDetail ? (
                     <SkeletonMovieDetail />
                   ) : movieDetail ? (
-                    <MovieDetail
-                      isOpen={isOpen}
-                      rating={rating}
-                      setRating={setRating}
-                      movieDetail={movieDetail}
-                      onAddToWatchList={handleAddToWatchList}
-                    />
+                    <MovieDetail>
+                      <MovieHeader movieDetail={movieDetail} />
+                      {isOpen ? (
+                        <MovieBody>
+                          <Rating
+                            rating={rating}
+                            setRating={setRating}
+                            onAddToWatchList={handleAddToWatchList}
+                          />
+                          <Information movieDetail={movieDetail} />
+                        </MovieBody>
+                      ) : null}
+                    </MovieDetail>
                   ) : (
                     <WatchedMoviesList>
                       <MoviesData moviesWatched={moviesWatched} />
@@ -86,6 +99,7 @@ function App() {
           )}
         </Main>
       </SkeletonTheme>
+      <ToastContainer theme="dark" />
     </div>
   );
 }

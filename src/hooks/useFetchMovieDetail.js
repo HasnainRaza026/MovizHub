@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { notifyError } from "../components/Notifications";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -15,7 +16,6 @@ export function useFetchMovieDetail(
     async function fetchMovieDetail() {
       try {
         setIsLoadingMovieDetail(true);
-        // setError("");
 
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${API_KEY}&i=${movieImdb}`,
@@ -43,8 +43,7 @@ export function useFetchMovieDetail(
         setMovieDetail(movieData);
       } catch (err) {
         if (err.name !== "AbortError") {
-          console.log(err.message);
-          // setError(err.message);
+          notifyError(err.message, 1500);
         }
       } finally {
         setIsLoadingMovieDetail(false);

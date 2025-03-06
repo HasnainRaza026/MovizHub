@@ -1,30 +1,8 @@
-import { Rating } from "./Rating";
-
-export function MovieDetail({
-  isOpen,
-  rating,
-  setRating,
-  movieDetail,
-  onAddToWatchList,
-}) {
-  return (
-    <>
-      <MovieHeader movieDetail={movieDetail} />
-      {isOpen ? (
-        <MovieBody>
-          <Rating
-            rating={rating}
-            setRating={setRating}
-            onAddToWatchList={onAddToWatchList}
-          />
-          <Information movieDetail={movieDetail} />
-        </MovieBody>
-      ) : null}
-    </>
-  );
+export function MovieDetail({ children }) {
+  return <>{children}</>;
 }
 
-function MovieHeader({ movieDetail }) {
+export function MovieHeader({ movieDetail }) {
   return (
     <div className="movie-header">
       <img
@@ -45,11 +23,11 @@ function MovieHeader({ movieDetail }) {
   );
 }
 
-function MovieBody({ children }) {
+export function MovieBody({ children }) {
   return <div className="movie-body">{children}</div>;
 }
 
-function Information({ movieDetail }) {
+export function Information({ movieDetail }) {
   return (
     <div className="info">
       <p className="description">{movieDetail.plot}</p>

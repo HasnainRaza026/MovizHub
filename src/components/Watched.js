@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { notifyError, notifySuccess } from "./Notifications";
 
 export function Watched({ children, movieDetail, setMovieDetail, rating }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -14,7 +15,7 @@ export function Watched({ children, movieDetail, setMovieDetail, rating }) {
       (elem) => elem.title === movieDetail.title
     );
     if (movieExist.length !== 0) {
-      //Also show error msg "Movie already exist"
+      notifyError("Movie already exist in watchlist");
       return;
     }
 
@@ -31,6 +32,7 @@ export function Watched({ children, movieDetail, setMovieDetail, rating }) {
 
     setMoviesWatched(movies);
     setMovieDetail(null);
+    notifySuccess("Movie added to watchlist");
   };
 
   useEffect(() => {

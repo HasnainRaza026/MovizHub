@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { notifyError } from "../components/Notifications";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -18,7 +19,6 @@ export function useFetchAllMovies(
     async function fetchMovies() {
       try {
         setIsLoadingAllMovies(true);
-        // setError("");
 
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
@@ -40,8 +40,7 @@ export function useFetchAllMovies(
       } catch (err) {
         if (err.name !== "AbortError") {
           setAllMovies(null);
-          console.log(err.message);
-          // setError(err.message);
+          notifyError(err.message, 1500);
         }
       } finally {
         setIsLoadingAllMovies(false);

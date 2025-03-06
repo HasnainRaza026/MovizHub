@@ -1,3 +1,5 @@
+import { notifySuccess } from "./Notifications";
+
 export function WatchedMoviesList({ children }) {
   return <>{children}</>;
 }
@@ -44,6 +46,7 @@ export function MoviesList({ moviesWatched, setMoviesWatched }) {
   const handleDeleteMovies = (title) => {
     const movies = moviesWatched.filter((elem) => elem.title !== title);
     setMoviesWatched(movies);
+    notifySuccess(`Movie '${title}' deleted successfully`);
   };
   return (
     <div className="watched-list">
