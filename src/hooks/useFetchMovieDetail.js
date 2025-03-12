@@ -18,7 +18,7 @@ export function useFetchMovieDetail(
         setIsLoadingMovieDetail(true);
 
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${API_KEY}&i=${movieImdb}`,
+          `https://www.omdbapi.com/?apikey=${API_KEY}&i=${movieImdb}`,
           { signal: controller.signal }
         );
 

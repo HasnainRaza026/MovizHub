@@ -21,7 +21,7 @@ export function useFetchAllMovies(
         setIsLoadingAllMovies(true);
 
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
+          `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchMovie}`,
           { signal: controller.signal }
         );
 
