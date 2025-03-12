@@ -20,6 +20,14 @@ MovizHub is a web-based application designed to provide a comprehensive movie br
 
 ## Demo
 
+![demo](public/demo.gif)
+
+The application is deployed on Netlify, you can try it out here 👉 [MovizHub](https://movizhub026.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c5e5355c-64c4-4238-945c-b993ca6975c5/deploy-status)](https://app.netlify.com/sites/movizhub026/deploys)
+
+Also check out its 👉 [figma design](https://www.figma.com/design/VMPGB2johIg5qYy2MWXOwt/MovizHub?node-id=0-1&t=2OJgCZYVq5xp0RkO-1)
+
 ## Installation
 
 ### Prerequisites
